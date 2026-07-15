@@ -1,0 +1,44 @@
+{
+  "DockerId": "0123456789abcdef0123456789abcdef-3333333333",
+  "Name": "adot-collector",
+  "DockerName": "adot-collector",
+  "Image": "public.ecr.aws/aws-observability/aws-otel-collector:v0.43.3",
+  "ImageID": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+  "Labels": {
+    "com.amazonaws.ecs.cluster": "arn:aws:ecs:ap-northeast-1:123456789012:cluster/local-compose",
+    "com.amazonaws.ecs.container-name": "adot-collector",
+    "com.amazonaws.ecs.task-arn": "arn:aws:ecs:ap-northeast-1:123456789012:task/local-compose/0123456789abcdef0123456789abcdef",
+    "com.amazonaws.ecs.task-definition-family": "myapp-local-task",
+    "com.amazonaws.ecs.task-definition-version": "1"
+  },
+  "DesiredStatus": "RUNNING",
+  "KnownStatus": "RUNNING",
+  "Limits": {
+    "CPU": 256,
+    "Memory": 512
+  },
+  "CreatedAt": "2026-07-15T00:00:05.300000000Z",
+  "StartedAt": "2026-07-15T00:00:06.300000000Z",
+  "Type": "NORMAL",
+  "ContainerARN": "arn:aws:ecs:ap-northeast-1:123456789012:container/local-compose/0123456789abcdef0123456789abcdef/33333333-3333-4333-8333-333333333333",
+  "LogDriver": "awslogs",
+  "LogOptions": {
+    "awslogs-group": "/ecs/myapp/local/adot-collector",
+    "awslogs-region": "ap-northeast-1",
+    "awslogs-stream": "adot/adot-collector/0123456789abcdef0123456789abcdef"
+  },
+  "Snapshotter": "overlayfs",
+  "Networks": [
+    {
+      "NetworkMode": "awsvpc",
+      "IPv4Addresses": ["10.0.0.10"],
+      "AttachmentIndex": 0,
+      "MACAddress": "02:42:0a:00:00:0a",
+      "IPv4SubnetCIDRBlock": "10.0.0.0/24",
+      "DomainNameServers": ["10.0.0.2"],
+      "DomainNameSearchList": ["ap-northeast-1.compute.internal"],
+      "PrivateDNSName": "ip-10-0-0-10.ap-northeast-1.compute.internal",
+      "SubnetGatewayIpv4Address": "10.0.0.1/24"
+    }
+  ]
+}
