@@ -3,7 +3,10 @@
 # (appdb / appuser は MySQL 公式イメージの MYSQL_DATABASE / MYSQL_USER で自動生成される)
 set -e
 
-mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" <<-EOSQL
+# MYSQL_PWD 経由でパスワードを渡し、プロセスリストへの露出を防ぐ
+export MYSQL_PWD="${MYSQL_ROOT_PASSWORD}"
+
+mysql -uroot <<-EOSQL
   CREATE DATABASE IF NOT EXISTS infdb
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
