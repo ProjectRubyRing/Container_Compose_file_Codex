@@ -40,7 +40,7 @@ services:
       DB_PORT: "3306"
       DB_NAME: appdb
       DB_USER: appuser
-      DB_PASSWORD: ${DB_PASSWORD:?set in .env}
+      DB_PASSWORD: ${APPDB_PASSWORD:?set in .env}
       VALKEY_HOST: valkey
       VALKEY_PORT: "6379"
       BACK_BASE_URL: http://app-back:8180
@@ -82,7 +82,7 @@ services:
       DB_PORT: "3306"
       DB_NAME: appdb
       DB_USER: appuser
-      DB_PASSWORD: ${DB_PASSWORD:?set in .env}
+      DB_PASSWORD: ${APPDB_PASSWORD:?set in .env}
       VALKEY_HOST: valkey
       VALKEY_PORT: "6379"
       SVF_BASE_URL: http://svf-mock:8080
@@ -141,9 +141,11 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?set in .env}
       MYSQL_DATABASE: appdb
       MYSQL_USER: appuser
-      MYSQL_PASSWORD: ${DB_PASSWORD:?set in .env}
+      MYSQL_PASSWORD: ${APPDB_PASSWORD:?set in .env}
+      INFDB_PASSWORD: ${INFDB_PASSWORD:?set in .env}
     volumes:
       - ./compose/mysql/init.sql:/docker-entrypoint-initdb.d/10-init.sql:ro
+      - ./compose/mysql/20-infdb.sh:/docker-entrypoint-initdb.d/20-infdb.sh:ro
       - mysql-data:/var/lib/mysql
     ports:
       - "3306:3306"
